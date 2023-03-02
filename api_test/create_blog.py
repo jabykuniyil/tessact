@@ -1,6 +1,6 @@
 import requests as r
 
-endpoint = "http://localhost:8000/user/"
+endpoint = "http://localhost:8000/blogs/"
 
 data = {
     "user_name": "jy",
