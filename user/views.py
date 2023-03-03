@@ -1,9 +1,7 @@
-from django.shortcuts import render
 from .models import UserProfile
-from rest_framework.views import APIView
 from rest_framework import generics, mixins
 from .serializer import UserDataSerializer
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
@@ -21,8 +19,6 @@ class UserMixinView(mixins.UpdateModelMixin, mixins.CreateModelMixin, mixins.Lis
         return self.list(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        # password = make_password(request.password)
-        # print(password)
         return self.create(request, *args, **kwargs)
 
     def perform_create(self, serializer):
@@ -30,8 +26,13 @@ class UserMixinView(mixins.UpdateModelMixin, mixins.CreateModelMixin, mixins.Lis
         password = make_password(password)
         serializer.save(password=password)
 
-    # def put(self, request, *args, **kwargs):
-    #     return self.update(request, *args, **kwargs)
+    def put(self, request, *args, **kwargs):
+        pk = kwargs.get("pk")
+        snippet = UserProfile.objects.get(id=pk)
+        serializer = UserDataSerializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return self.update(request, *args, **kwargs)
 
 
 user_mixin_view = UserMixinView.as_view()

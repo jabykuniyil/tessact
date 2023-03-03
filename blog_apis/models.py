@@ -13,3 +13,6 @@ class Blog(models.Model):
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=False)
     created_at = models.DateTimeField(null=False, default=datetime.datetime.now())
 
+    @property
+    def get_author(self):
+        return self

@@ -1,9 +1,9 @@
 import requests as r
 
-endpoint = "http://localhost:8000/user/"
+endpoint = "http://localhost:8000/user/6/"
 
 data = {
-    "user_name": "koooo",
+    "user_name": "None",
     "email_id": "muha@gmail.com",
     "first_name": "mooo",
     "last_name": "haaa",
@@ -13,5 +13,5 @@ data = {
     "phone_number": "381803011",
     "notify_user": True
 }
-res = r.post(endpoint, json=data)
+res = r.put(endpoint, json=data)
 print(res.json())
