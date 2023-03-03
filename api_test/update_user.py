@@ -7,7 +7,7 @@ data = {
     "email_id": "muha@gmail.com",
     "first_name": "mooo",
     "last_name": "haaa",
-    "password": "muhaa",
+    "password": "muha",
     "dob": "2000-02-10",
     "address": "dd",
     "phone_number": "381803011",
