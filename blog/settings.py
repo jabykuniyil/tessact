@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
-import django_heroku
 
 from pathlib import Path
 
@@ -84,7 +83,8 @@ DATABASES = {
         'NAME': 'tessact',
         'USER': 'postgres',
         'PASSWORD': 'jaby',
-        'HOST': 'localhost'
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 
@@ -145,6 +145,3 @@ CELERY_IMPORTS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# Activate Django-heroku
-django_heroku.settings(locals())
